@@ -42,11 +42,16 @@
       },
       "runtime" : {
          "requires" : {
+            "Path::Tiny" : "0",
+            "Scalar::Util" : "0",
+            "Symbol" : "0",
+            "Tie::StdHandle" : "0",
             "perl" : "5.008005"
          }
       },
       "test" : {
          "requires" : {
+            "IPC::Run" : "0",
             "Test::More" : "0.98"
          }
       }

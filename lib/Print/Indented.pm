@@ -2,12 +2,17 @@ package Print::Indented;
 use 5.008005;
 use strict;
 use warnings;
+use Print::Indented::Handle;
 
-our $VERSION = "0.01";
+our $VERSION = '0.01';
 
-
+sub import {
+    Print::Indented::Handle->new(\*STDOUT);
+    Print::Indented::Handle->new(\*STDERR);
+}
 
 1;
+
 __END__
 
 =encoding utf-8
