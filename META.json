@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Indent outputs indented as per source code indentation",
    "author" : [
       "motemen <motemen@gmail.com>"
    ],

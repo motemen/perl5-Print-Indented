@@ -1,14 +1,21 @@
 # NAME
 
-Print::Indented - It's new $module
+Print::Indented - Indent outputs indented as per source code indentation
 
 # SYNOPSIS
 
     use Print::Indented;
 
+    print "foo\n"; # prints "foo"
+
+    {
+        print "bar\n"; # prints "    bar";
+    }
+
 # DESCRIPTION
 
-Print::Indented is ...
+Print::Indented indents stdout/stderr outputs according to the source line indentation
+where print function called, ex. `print`, `warn`.
 
 # LICENSE
 

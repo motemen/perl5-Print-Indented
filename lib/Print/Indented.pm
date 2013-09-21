@@ -19,15 +19,22 @@ __END__
 
 =head1 NAME
 
-Print::Indented - It's new $module
+Print::Indented - Indent outputs indented as per source code indentation
 
 =head1 SYNOPSIS
 
     use Print::Indented;
 
+    print "foo\n"; # prints "foo"
+
+    {
+        print "bar\n"; # prints "    bar";
+    }
+
 =head1 DESCRIPTION
 
-Print::Indented is ...
+Print::Indented indents stdout/stderr outputs according to the source line indentation
+where print function called, ex. C<< print >>, C<< warn >>.
 
 =head1 LICENSE
 
