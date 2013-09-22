@@ -1,7 +1,8 @@
 package Print::Indented::Handle;
 use strict;
 use warnings;
-use parent 'Tie::StdHandle';
+use Tie::Handle;
+use parent -norequire => 'Tie::StdHandle';
 use Scalar::Util qw(refaddr);
 use Path::Tiny;
 use Symbol;

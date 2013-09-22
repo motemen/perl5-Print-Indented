@@ -4,7 +4,7 @@
       "motemen <motemen@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Minilla/v0.6.7, CPAN::Meta::Converter version 2.132140",
    "license" : [
       "perl_5"
    ],
@@ -45,7 +45,7 @@
             "Path::Tiny" : "0",
             "Scalar::Util" : "0",
             "Symbol" : "0",
-            "Tie::StdHandle" : "0",
+            "Tie::Handle" : "0",
             "perl" : "5.008005"
          }
       },
@@ -57,5 +57,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/motemen/perl5-Print-Indented/issues"
+      },
+      "homepage" : "https://github.com/motemen/perl5-Print-Indented",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/motemen/perl5-Print-Indented.git",
+         "web" : "https://github.com/motemen/perl5-Print-Indented"
+      }
+   },
    "version" : "0.01"
 }

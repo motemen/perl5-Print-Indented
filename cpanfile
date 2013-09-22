@@ -1,6 +1,6 @@
 requires 'perl', '5.008001';
 
-requires 'Tie::StdHandle';
+requires 'Tie::Handle';
 requires 'Scalar::Util';
 requires 'Path::Tiny';
 requires 'Symbol';
