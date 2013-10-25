@@ -7,8 +7,17 @@ use Print::Indented::Handle;
 our $VERSION = '0.01';
 
 sub import {
-    Print::Indented::Handle->new(\*STDOUT);
-    Print::Indented::Handle->new(\*STDERR);
+    my $class = shift;
+
+    my ($pkg) = caller;
+    undef $pkg if $pkg eq 'main';
+    undef $pkg if grep /^:all$/, @_;
+
+    our $STDOUT ||= Print::Indented::Handle->new(\*STDOUT);
+    our $STDERR ||= Print::Indented::Handle->new(\*STDERR);
+
+    my $pkg_re = defined $pkg ? qr/^\Q$pkg\E$/ : qr//;
+    $_->add_package_re($pkg_re) for $STDOUT, $STDERR;
 }
 
 1;

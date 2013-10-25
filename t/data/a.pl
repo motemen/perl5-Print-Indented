@@ -1,3 +1,5 @@
+package
+    t::data::a;
 use strict;
 use warnings;
 

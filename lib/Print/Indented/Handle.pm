@@ -6,8 +6,9 @@ use parent -norequire => 'Tie::StdHandle';
 use Scalar::Util qw(refaddr);
 use Path::Tiny;
 use Symbol;
+use List::MoreUtils qw(any);
 
-our %Fh;
+our (%Fh, %Packages);
 
 sub new {
     my ($class, $target) = @_;
@@ -31,13 +32,29 @@ sub original_fh {
     return $Fh{ refaddr $self };
 }
 
+sub packages_re {
+    my $self = shift;
+    return @{ $Packages{ refaddr $self } || [] };
+}
+
+sub add_package_re {
+    my $self = shift;
+    push @{ $Packages{ refaddr $self } ||= [] }, @_;
+}
+
 sub PRINT {
     my ($self, @args) = @_;
-    my (undef, $file, $nr) = caller;
-    my $line = (path($file)->lines)[$nr-1];
-    my ($indent) = $line =~ /^(\s*)/;
-    foreach (grep length, split m<(.*$/?)>, join('', @args)) {
-        print { $self->original_fh } "$indent$_";
+    my ($pkg, $filename, $nr) = caller;
+
+    if (any { $pkg =~ $_ } $self->packages_re) {
+        my $line = (path($filename)->lines)[$nr-1];
+        my ($indent) = $line =~ /^(\s*)/;
+        foreach (grep length, split m<(.*$/?)>, join('', @args)) {
+            print { $self->original_fh } "$indent$_";
+        }
+    } else {
+        # do not indent
+        print { $self->original_fh } @args;
     }
 }
 
